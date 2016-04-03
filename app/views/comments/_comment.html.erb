@@ -1,0 +1,41 @@
+
+<%@post = Post.find(params[:post_id]) %>
+Posted by <%= User.find(@post.user_id).f_name + User.find(@post.user_id).l_name %> <br>
+<div><h3><%= @post.title %></h3>
+ <%= @post.body %> <br>
+ 
+    <%=link_to  'Like' %> 
+    &nbsp; &nbsp;<%= @post.likes.count %>
+    <%#if current_user.already_likes?(@post)%>
+     <%#else%>
+     <%#end%>
+ <b>Comment &nbsp; &nbsp;   <%= @post.comments.count %></b> 
+ </div>
+<br><br>
+
+
+Comments :
+<% @comments.each do |comnt|%>
+<%@user = User.find(comnt.user_id) %>
+<div>
+<h5><%= @user.f_name%>
+<%= @user.l_name%></h5>
+
+<%= comnt.desc %>
+<br>
+<%=link_to  'Like' ,post_comment_like_path(@post ,comnt) %>
+  &nbsp; &nbsp;<%= comnt.likes.where(like_status: true).count %>
+
+<%=link_to  'UnLike',post_comment_dislike_path(@post ,comnt) %>
+  &nbsp; &nbsp;<%= comnt.likes.where(like_status:false).count %>
+
+<%if (current_user.id == comnt.user_id)%>
+<%= link_to 'Edit' , edit_post_comment_path(@post ,comnt) %>
+<%= link_to  'Delete Post' , delete_post_comment_path(@post,comnt)  ,method: :delete,:notice=> 'Successfully deleted'%>
+<%else%>
+<%end%>
+</div>
+<%end%>
+
+
+

@@ -1,0 +1,6 @@
+<h1>Posts#edit</h1>
+<p>Find me in app/views/posts/edit.html.erb</p>
+<%= render 'form'%>
+<%= link_to 'Like' ,post_like_path(@post) %>
+  &nbsp; &nbsp;<%= @post.likes.count %> <br><br>
+<%= link_to 'Back' , post_path(@post) %>

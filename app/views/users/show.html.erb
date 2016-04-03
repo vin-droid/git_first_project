@@ -1,0 +1,12 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+  <pre>First Name: <%= @user.f_name %>
+  Last Name: <%= @user.l_name %>
+  Email: <%= @user.email_id %>
+  Age: <%= @user.age %>
+  Date of Birth: <%= @user.dob %>
+  Sex: <%= @user.sex %>
+  </pre>
+  <%= link_to 'Back' , root_path %> | 
+  <%= link_to 'Edit' , edit_user_path(@user) %> | 
+  <%= link_to 'Delete Your Account' , user_path(@user) ,method: :delete %>

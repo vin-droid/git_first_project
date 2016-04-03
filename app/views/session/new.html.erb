@@ -1,0 +1,11 @@
+<h1>Login</h1>
+
+<%= form_for :session, :url =>login_path do |f|%>
+<pre>
+  Email:    <%= f.email_field :email %><br>
+  Password: <%= f.password_field :password %><br>
+  <%= f.submit "Submit" %> 
+  <%= link_to 'Sign up' , signup_path%> 
+  </pre>
+  <%= link_to 'Home' , root_path%> 
+<% end %>

@@ -1,0 +1,12 @@
+
+<%= render 'comment'%>
+
+<pre>
+<%=current_user.f_name%><%= current_user.l_name%>
+<%= form_for :comment, :url=> post_comments_path(@post) do |f|%>
+  <%= f.text_area :desc %><br>
+  <%= f.submit "Submit" %>
+  <%end%> 
+
+</pre>
+<%= link_to 'Home' , root_path%>
